@@ -69,6 +69,7 @@ window.addEventListener('DOMContentLoaded', function() {
             function updateClock() {
                 let t = getTimeRemaining(endtime);
 
+                //функция, добавляющая ноль, если часы/минуты/секунды менее 10.
                 function addZero(num){
                             if(num <= 9) {
                                 return '0' + num;
@@ -79,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 minutes.textContent = addZero(t.minutes);
                 seconds.textContent = addZero(t.seconds);
     
+                //если таймер истек, отображается 00:00:00
                 if (t.total <= 0) {
                     clearInterval(timeInterval);
                     hours.textContent = '00';
