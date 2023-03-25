@@ -4,7 +4,7 @@ Tabs on a webpage - JavaScript
 3 popular components of a landing page - tabs, countdown timer, modal window. 
 HTML + CSS + JavaScript
 
-Section 1 - Tabs
+##Section 1 - Tabs
 - add as many tabs as you need
 - replace with your content for each of the tabs
 
