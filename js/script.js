@@ -103,5 +103,22 @@ window.addEventListener('DOMContentLoaded', function() {
     more.addEventListener('click', function() {
         overlay.style.display = "block";
         this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; //замораживает модальное окно на странице + строка 112 снимает
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    })
+
+    let moreTabs = document.querySelectorAll('.description-btn');
+
+    moreTabs.forEach(function(elem) {
+        elem.addEventListener('click', function() {
+            overlay.style.display = "block";
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden';
+        })
     })
 });
