@@ -34,6 +34,7 @@ Actually, we need to determine how many ms is there between 'end date/time' and 
 If you have many days left before your 'end date' this might be confusing for a user to see 3 or even 4-digits 'hours left'. Then I recommend to change formula for hours calculation and add 'days left' calculation in 'getTimeRemaining' function. Replace line 48 of script.js file with the following 2 lines:
   
 hours = Math.floor((t/1000/60/60) % 24),
+  
 days = Math.floor((t/(1000*60*60*24)));
   
 Do not forget to add a separate <span> for 'days' (or 2 <span>s for 'days' and related ":") to index.html file (reasonably before 'hours'):
