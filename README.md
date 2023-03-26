@@ -7,14 +7,9 @@ Section 1 - Tabs
 - add as many tabs as you need (event delegate)
 - replace with your content for each of the tabs
 
-There are 4 tabs on the webpage (class="info-header-tab"). These can be changed in index.html, lines 47-50, you can use more or less than 4 tabs:
-
-47					<div class="info-header-tab">Лечение</div>
-48          <div class="info-header-tab">Отдых</div>
-49				  <div class="info-header-tab">Природа</div>
-50				  <div class="info-header-tab">Йога</div>
-
-Tabs are wrapped in <div class="info-header"> - line 46 of index.html. "info-header" is a parent nod for "info-header-tab"s.
+There are 4 tabs on the webpage (class="info-header-tab"). These can be changed in index.html, lines 47-50, you can use more or less than 4 tabs. Tabs are wrapped in <div class="info-header"> - line 46 of index.html. "info-header" is a parent nod for "info-header-tab"s.
+  
+![image](https://user-images.githubusercontent.com/113363158/227763153-1dc69467-a9e6-44d6-80f6-fa0d57d2b4c3.png)
   
 Each of the tabs has related content tab (class="info-tabcontent"). Content of tabs can be adjusted - search for <div class="info-tabcontent fade">, then find it's closing tag and replace with your content. For example, lines 52-64 of index.html make one 'tabcontent'.
 
@@ -42,13 +37,8 @@ hours = Math.floor((t/1000/60/60) % 24),
 days = Math.floor((t/(1000*60*60*24)));
   
 Do not forget to add a separate <span> for 'days' (or 2 <span>s for 'days' and related ":") to index.html file (reasonably before 'hours'):
-107  <div class="timer-numbers" id="timer">
-108				<span class="hours">18</span>
-109				<span>:</span>
-110				<span class="minutes">20</span>
-111				<span>:</span>
-112				<span class="seconds">11</span>
-113			</div>
+  
+![image](https://user-images.githubusercontent.com/113363158/227763203-cca644ac-586a-4cea-8a28-d402e521bf6e.png)
 
 And also add 'days' to object, returned by 'getTimeRemaining' function, functions setClock, addZero.
   
