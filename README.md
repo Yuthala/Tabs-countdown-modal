@@ -70,9 +70,39 @@ Section 3 - Modal Window
   - animated
   - can be applied to single button or series of buttons having the same class
   
+On button click there appears a modal window containing contact form - 'overlay'. "overlay' appears smoothly, with 2.5s fade animation. 
+  Pressing cross on the top left closes 'overlay'.  
+  
+1. Single button
+  We add Event Listener to this button (class="more"). By clicking this button we unhide 'overlay' by assigning "block" value using style.display.
+  
+![image](https://user-images.githubusercontent.com/113363158/227770733-56021c84-d60c-44ff-ba5e-834c5a482ad5.png)
+
+This setting allows a user to scroll the page, still having 'overlay' open. If you need to disable any actions on the page you shuld add the following line:
+  
+  ![image](https://user-images.githubusercontent.com/113363158/227770535-574c8353-8ccd-49b5-aabf-e45cffa0d00b.png)
+  
+Close cross does the opposite - adds style.display = "none" to 'overlay':
+  
+  ![image](https://user-images.githubusercontent.com/113363158/227770817-d0d29cea-f1dd-42cd-9722-ff0ace6ac10b.png)
+
+  If you had used "freeze all" option please include the following line, which unfreezes 'overlay':
+  
+  ![image](https://user-images.githubusercontent.com/113363158/227770914-22e84afa-dfdd-48f4-bb0b-85383f795f50.png)
+
+2. If you have multiple buttons which open the same overlay you need to recieve all necessary DOM-elements on the page in pseudo-array. It is convinient to add the same class in HTML to all these DOM-elements. On this page this is class 'description-btn':
+  
+  ![image](https://user-images.githubusercontent.com/113363158/227771420-9542d47d-c211-46d6-868d-31fca43503be.png)
+
+Use forEach cycle and 'this' to go through all necessary elements and do necessary actions with DOM elements:
+  
+  ![image](https://user-images.githubusercontent.com/113363158/227771609-f27eaec2-5dba-45c7-960b-ac976504ddbd.png)
+
+
   
   
   
+
   
   
   
