@@ -66,6 +66,11 @@ And also add 'days' to object, returned by 'getTimeRemaining' function, function
   ![image](https://user-images.githubusercontent.com/113363158/227767678-85a7f1e4-65f8-42ec-8e1d-deb9977a7a3d.png)
 
 Section 3 - Modal Window
+  - 2 options: user allowed to scroll or full window freeze
+  - animated
+  - can be applied to single button or series of buttons having the same class
+  
+  
   
   
   
