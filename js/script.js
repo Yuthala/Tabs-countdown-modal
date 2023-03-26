@@ -27,9 +27,9 @@ window.addEventListener('DOMContentLoaded', function() {
         let target = event.target;
         if (target && target.classList.contains('info-header-tab')) {
             for(let i = 0; i < tab.length; i++) {
-                if (target == tab[i]) {
-                    hideTabContent(0);
-                    showTabContent(i);
+                if (target == tab[i]) { //condition tab index matches [i]
+                    hideTabContent(0); // hide all tabs, starting from 0
+                    showTabContent(i); //show specific tab with the same index
                     break;
                 }
             }
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', function() {
     close.addEventListener('click', function() {
         overlay.style.display = 'none';
         more.classList.remove('more-splash');
-        document.body.style.overflow = '';
+        document.body.style.overflow = ''; //unfreeze
     })
 
     let moreTabs = document.querySelectorAll('.description-btn');
