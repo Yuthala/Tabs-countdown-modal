@@ -17,7 +17,7 @@ There are 4 tabs on the webpage (class="info-header-tab"). These can be changed 
 Tabs are wrapped in <div class="info-header"> - line 46 of index.html. "info-header" is a parent nod for "info-header-tab"s.
   
 Each of the tabs has related content tab (class="info-tabcontent"). Content of tabs can be adjusted - search for <div class="info-tabcontent fade">, then find it's closing tag and replace with your content. For example, lines 52-64 of index.html make one 'tabcontent'.
-------
+
 When we arrange tabs we do the following:
   1. hide all tabs on the webpage except for the first one
   'hideTabContent' is responsible for this part. If we have more than one tab on the webpage we need to use 'for' cycle to go through each tab element. 
