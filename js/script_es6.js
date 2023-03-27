@@ -1,4 +1,3 @@
-window.addEventListener('DOMContentLoaded', function() {
 
     class Options {
         constructor(height, width, bg, fontSize, textAlign) {
@@ -6,9 +5,9 @@ window.addEventListener('DOMContentLoaded', function() {
             this.width = width;
             this.bg = bg;
             this.fontSize = fontSize;
-            this.textAlign = text.textAlign;
+            this.textAlign = textAlign;
         }
-        createDiv() {
+        createDiv() { //создаем новый <div> через класс
             let elem = document.createElement('div'); //создаем <div> на странице
             document.body.appendChild(elem); //вставляем <div> в body
             //записываем параметры стилей для <div>
@@ -17,4 +16,6 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-});
+    const item = new Options(300, 400, "blue", 16, "center"); //передаем аргументы
+
+    item.createDiv(); //создаем элемент на странице
