@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function() {
                             if(num <= 9) {
                                 return '0' + num;
                             } else return num;
-                        };
+                        }
     
                 hours.textContent = addZero(t.hours);
                 minutes.textContent = addZero(t.minutes);
@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', function() {
         overlay.style.display = 'none';
         more.classList.remove('more-splash');
         document.body.style.overflow = ''; //unfreeze
-    })
+    });
 
     let moreTabs = document.querySelectorAll('.description-btn');
 
@@ -119,8 +119,8 @@ window.addEventListener('DOMContentLoaded', function() {
             overlay.style.display = "block";
             this.classList.add('more-splash');
             document.body.style.overflow = 'hidden';
-        })
-    })
+        });
+    });
 
     //Form
 
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function() {
         loading: 'Загрузка',
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так...'
-    }
+    };
 
     let form = document.querySelector('.main-form'), //форма из модального окна
         input = form.getElementsByTagName('input'), //инпуты в этой форме
@@ -145,8 +145,17 @@ window.addEventListener('DOMContentLoaded', function() {
         request.open('POST', 'server.php');//настраиваем XMLHttp запрос 
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); //настраиваем заголовки  XMLHttp запроса 
 
-        let formData = new formData(form);//получить данные, введенные пользователем
+        var formData = new formData(form);//получить данные, введенные пользователем
+
+        //преобразовываем объект formData в обычный объект
+        let obj = {};
+        formData.forEach(function(value, key) {
+            obj[key] = value; //теперь в переменной obj находятся все данные, которые ввел в форму пользователь
+        });
+        let json = JSON.stringify(obj); //преобразуем полученные данные из формы в JSON формат
+
         request.send(formData);//отправить запрос на сервер, указав в body запроса объект formData
+        //request.send(formData); //если отправляем данные из формы как JSON объект
 
         //выводим сообщение пользователю, успешно ли отправлена форма
         request.addEventListener('readystatechange', function() {
