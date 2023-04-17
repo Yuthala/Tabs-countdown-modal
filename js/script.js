@@ -232,4 +232,53 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+//Калькулятор
+    let persons = document.querySelectorAll('.counter-block-input')[0], //поле "количество людей" - вводит пользователь
+        restDays = document.querySelectorAll('.counter-block-input')[1], //поле "на сколько дней" - вводит пользователь
+        place = document.getElementById('select'), //поле "Выберите базу" - выбирает пользователь из drop-down 
+        totalValue = document.getElementById('total'), //поле для вывода результатов подсчета стоимости тура
+        personsSum = 0, //переменная, в которую записывается то, что ввел пользователь в поле "количество людей"
+        daysSum = 0, //переменная, в которую записывается то, что ввел пользователь в поле "на сколько дней"
+        total = 0; //переменная для хранения результатов подсчета стоимости тура
+
+        totalValue.innerHTML = 0; //устанавливаем начальное значение итоговой стоимости на 0
+
+        //навешиваем обработчик событий на ввод чего-либо в поле "количество людей"
+        persons.addEventListener('change', function() { //используем обычную функцию, тк далее будем использовать this
+            personsSum = +this.value; //записываем в переменную число, введенное пользователем
+            total = (daysSum + personsSum)*4000;
+
+            //если пользователь не ввел количество дней, то будет отображаться ноль в поле Общая сумма
+            if(restDays.value == '') {
+                totalValue.innerHTML = 0;
+            } else { //если оба поля заполнены, отобразится общая стоимость тура
+                totalValue.innerHTML = total;
+            }
+        });
+
+         //навешиваем обработчик событий на ввод чего-либо в поле "на сколько дней"
+        restDays.addEventListener('change', function() { //используем обычную функцию, тк далее будем использовать this
+            daysSum = +this.value; //записываем в переменную число, введенное пользователем
+            total = (daysSum + personsSum)*4000;
+
+            //если пользователь не ввел количество людей, то будет отображаться ноль в поле Общая сумма
+            if(persons.value == '') {
+                totalValue.innerHTML = 0;
+            } else { //если оба поля заполнены, отобразится общая стоимость тура
+                totalValue.innerHTML = total;
+            }
+        });
+
+         //навешиваем обработчик событий на выбор одной из опций баз отдыха
+        place.addEventListener('change', function() {
+
+            //если пользователь не ввел либо количество людей, либо количество дней, то будет отображаться ноль в поле Общая сумма
+            if (restDays.value == '' || persons.value == '') {
+                totalValue.innerHTML = 0;
+            } else {
+                let a = total; //используем локальную переменную a, чтобы при изменении базы отдыха total не суммировалась
+                totalValue.innerHTML = a * this.options[this.selectedIndex].value; //умножаем "локальный" total на значение атрибута value тега select, соответствующего выбранному пункту базы отдыха
+            }
+        });
+
 });
