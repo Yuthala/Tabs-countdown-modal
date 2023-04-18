@@ -246,8 +246,7 @@ window.addEventListener('DOMContentLoaded', function() {
         //навешиваем обработчик событий на ввод чего-либо в поле "количество людей"
         persons.addEventListener('change', function() { //используем обычную функцию, тк далее будем использовать this
             personsSum = +this.value; //записываем в переменную число, введенное пользователем
-
-            if (personsSum == null || personsSum == 0 || daysSum == null || daysSum == 0) {
+            if (personsSum == null || personsSum <= 0 || daysSum == null || daysSum <= 0) {
                 total = 0;
                 totalValue.innerHTML = 0;
             } else {
@@ -263,7 +262,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
             //если пользователь не ввел количество людей, то будет отображаться ноль в поле Общая сумма
             
-            if (personsSum == null || personsSum == 0 || daysSum == null || daysSum == 0) {
+            if (personsSum == null || personsSum <= 0 || daysSum == null || daysSum <= 0) {
                 total = 0;
                 totalValue.innerHTML = 0;
             } else {
@@ -283,5 +282,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 totalValue.innerHTML = a * this.options[this.selectedIndex].value; //умножаем "локальный" total на значение атрибута value тега select, соответствующего выбранному пункту базы отдыха
             }
         });
+
 
 });
