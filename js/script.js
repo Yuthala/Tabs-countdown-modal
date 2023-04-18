@@ -246,12 +246,12 @@ window.addEventListener('DOMContentLoaded', function() {
         //навешиваем обработчик событий на ввод чего-либо в поле "количество людей"
         persons.addEventListener('change', function() { //используем обычную функцию, тк далее будем использовать this
             personsSum = +this.value; //записываем в переменную число, введенное пользователем
-            total = (daysSum + personsSum)*4000;
 
-            //если пользователь не ввел количество дней, то будет отображаться ноль в поле Общая сумма
-            if(restDays.value == '') {
+            if (personsSum == null || personsSum == 0 || daysSum == null || daysSum == 0) {
+                total = 0;
                 totalValue.innerHTML = 0;
-            } else { //если оба поля заполнены, отобразится общая стоимость тура
+            } else {
+                total = (daysSum + personsSum)*4000;
                 totalValue.innerHTML = total;
             }
         });
@@ -262,9 +262,12 @@ window.addEventListener('DOMContentLoaded', function() {
             total = (daysSum + personsSum)*4000;
 
             //если пользователь не ввел количество людей, то будет отображаться ноль в поле Общая сумма
-            if(persons.value == '') {
+            
+            if (personsSum == null || personsSum == 0 || daysSum == null || daysSum == 0) {
+                total = 0;
                 totalValue.innerHTML = 0;
-            } else { //если оба поля заполнены, отобразится общая стоимость тура
+            } else {
+                total = (daysSum + personsSum)*4000;
                 totalValue.innerHTML = total;
             }
         });
