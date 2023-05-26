@@ -2,109 +2,109 @@ window.addEventListener('DOMContentLoaded', function() {
 
     'use strict';
 
-    //Tabs
-    let tab = document.querySelectorAll('.info-header-tab'),
-        info = document.querySelector('.info-header'),
-        tabContent = document.querySelectorAll('.info-tabcontent');
+//     //Tabs
+//     let tab = document.querySelectorAll('.info-header-tab'),
+//         info = document.querySelector('.info-header'),
+//         tabContent = document.querySelectorAll('.info-tabcontent');
 
-    function hideTabContent(a) {
-        for (let i = a; i < tabContent.length; i++) {
-            tabContent[i].classList.remove('show');
-            tabContent[i].classList.add('hide');
-        }
-    }
+//     function hideTabContent(a) {
+//         for (let i = a; i < tabContent.length; i++) {
+//             tabContent[i].classList.remove('show');
+//             tabContent[i].classList.add('hide');
+//         }
+//     }
 
-    hideTabContent(1);
+//     hideTabContent(1);
 
-    function showTabContent(b) {
-        if (tabContent[b].classList.contains('hide')) {
-            tabContent[b].classList.remove('hide');
-            tabContent[b].classList.add('show');
-        }
-    }
+//     function showTabContent(b) {
+//         if (tabContent[b].classList.contains('hide')) {
+//             tabContent[b].classList.remove('hide');
+//             tabContent[b].classList.add('show');
+//         }
+//     }
 
-    info.addEventListener('click', function(event) {
-        let target = event.target;
-        if (target && target.classList.contains('info-header-tab')) {
-            for(let i = 0; i < tab.length; i++) {
-                if (target == tab[i]) { //condition tab index matches [i]
-                    hideTabContent(0); // hide all tabs, starting from 0
-                    showTabContent(i); //show specific tab with the same index
-                    break;
-                }
-            }
-        }
+//     info.addEventListener('click', function(event) {
+//         let target = event.target;
+//         if (target && target.classList.contains('info-header-tab')) {
+//             for(let i = 0; i < tab.length; i++) {
+//                 if (target == tab[i]) { //condition tab index matches [i]
+//                     hideTabContent(0); // hide all tabs, starting from 0
+//                     showTabContent(i); //show specific tab with the same index
+//                     break;
+//                 }
+//             }
+//         }
 
-    });
-// Timer
+//     });
+// // Timer
 
-    let deadline = '2023-03-26';
+//     let deadline = '2023-03-26';
 
-    //функция, определяющая остаток времени до дэдлайна
-    function getTimeRemaining(endtime) {
-        let t = Date.parse(endtime) - Date.parse(new Date()), //вычисляем количество миллисекунд от установленного времени окончания до текущего времени
-        seconds = Math.floor((t/1000) % 60), //вычисляем количество целых секунд
-        minutes = Math.floor((t/1000/60) % 60), //вычисляем количество целых минут
-        hours = Math.floor((t/(1000*60*60))); //вычисляем количество целых часов
-        //hours = Math.floor((t/1000/60/60) % 24), //если нужны также дни
-        //days = Math.floor((t/(1000*60*60*24)));
+//     //функция, определяющая остаток времени до дэдлайна
+//     function getTimeRemaining(endtime) {
+//         let t = Date.parse(endtime) - Date.parse(new Date()), //вычисляем количество миллисекунд от установленного времени окончания до текущего времени
+//         seconds = Math.floor((t/1000) % 60), //вычисляем количество целых секунд
+//         minutes = Math.floor((t/1000/60) % 60), //вычисляем количество целых минут
+//         hours = Math.floor((t/(1000*60*60))); //вычисляем количество целых часов
+//         //hours = Math.floor((t/1000/60/60) % 24), //если нужны также дни
+//         //days = Math.floor((t/(1000*60*60*24)));
 
-        return {
-            'total' : t,
-            'hours' : hours,
-            'minutes' : minutes,
-            'seconds' : seconds
-        };
-    }
+//         return {
+//             'total' : t,
+//             'hours' : hours,
+//             'minutes' : minutes,
+//             'seconds' : seconds
+//         };
+//     }
     
-    //функция для динамической вставки вычисленных значений времени в верстку
-    function setClock(id, endtime) { 
-        let timer = document.getElementById(id),
-            hours = timer.querySelector('.hours'),
-            minutes = timer.querySelector('.minutes'),
-            seconds = timer.querySelector('.seconds'),
-            timeInterval = setInterval(updateClock, 1000);
+//     //функция для динамической вставки вычисленных значений времени в верстку
+//     function setClock(id, endtime) { 
+//         let timer = document.getElementById(id),
+//             hours = timer.querySelector('.hours'),
+//             minutes = timer.querySelector('.minutes'),
+//             seconds = timer.querySelector('.seconds'),
+//             timeInterval = setInterval(updateClock, 1000);
 
-            //функция, обновляющая таймер 
-            function updateClock() {
-                let t = getTimeRemaining(endtime);
+//             //функция, обновляющая таймер 
+//             function updateClock() {
+//                 let t = getTimeRemaining(endtime);
 
-                //функция, добавляющая ноль, если часы/минуты/секунды менее 10.
-                function addZero(num){
-                            if(num <= 9) {
-                                return '0' + num;
-                            } else return num;
-                        }
+//                 //функция, добавляющая ноль, если часы/минуты/секунды менее 10.
+//                 function addZero(num){
+//                             if(num <= 9) {
+//                                 return '0' + num;
+//                             } else return num;
+//                         }
     
-                hours.textContent = addZero(t.hours);
-                minutes.textContent = addZero(t.minutes);
-                seconds.textContent = addZero(t.seconds);
+//                 hours.textContent = addZero(t.hours);
+//                 minutes.textContent = addZero(t.minutes);
+//                 seconds.textContent = addZero(t.seconds);
     
-                //если таймер истек, отображается 00:00:00
-                if (t.total <= 0) {
-                    clearInterval(timeInterval);
-                    hours.textContent = '00';
-                    minutes.textContent = '00';
-                    seconds.textContent = '00';
-                }
-            }
+//                 //если таймер истек, отображается 00:00:00
+//                 if (t.total <= 0) {
+//                     clearInterval(timeInterval);
+//                     hours.textContent = '00';
+//                     minutes.textContent = '00';
+//                     seconds.textContent = '00';
+//                 }
+//             }
     
-        }
+//         }
     
-        setClock('timer', deadline);
+//         setClock('timer', deadline);
 
 
 //Modal
 
-    let more = document.querySelector('.more'),
+    let // = document.querySelector('.more'),
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
 
-    more.addEventListener('click', function() {
-        overlay.style.display = "block";
-        this.classList.add('more-splash');
-        document.body.style.overflow = 'hidden'; //замораживает модальное окно на странице + строка 112 снимает
-    });
+    // more.addEventListener('click', function() {
+    //     overlay.style.display = "block";
+    //     this.classList.add('more-splash');
+    //     document.body.style.overflow = 'hidden'; //замораживает модальное окно на странице + строка 112 снимает
+    // });
 
     close.addEventListener('click', function() {
         overlay.style.display = 'none';
@@ -173,64 +173,64 @@ window.addEventListener('DOMContentLoaded', function() {
             }
     });
 
-//Slider
+// //Slider
 
-    let slideIndex = 1, //Параметр текущего слайда
-        slides = document.querySelectorAll('.slider-item'),
-        prev = document.querySelector('.prev'),
-        next = document.querySelector('.next'),
-        dotsWrap = document.querySelector('.slider-dots'),
-        dots = document.querySelectorAll('.dot');
+//     let slideIndex = 1, //Параметр текущего слайда
+//         slides = document.querySelectorAll('.slider-item'),
+//         prev = document.querySelector('.prev'),
+//         next = document.querySelector('.next'),
+//         dotsWrap = document.querySelector('.slider-dots'),
+//         dots = document.querySelectorAll('.dot');
 
-    showSlides(slideIndex);
+//     showSlides(slideIndex);
 
-    //функция, показывающая и скрывающая слайды и точки
-    function showSlides(n) {
+//     //функция, показывающая и скрывающая слайды и точки
+//     function showSlides(n) {
 
-        if(n > slides.length) { //если мы дошли до последнего слайда
-            slideIndex = 1;
-        }
-        if (n < 1) { //если мы на первом слайде нажимаем стрелку "назад"
-            slideIndex = slides.length;
-        }
+//         if(n > slides.length) { //если мы дошли до последнего слайда
+//             slideIndex = 1;
+//         }
+//         if (n < 1) { //если мы на первом слайде нажимаем стрелку "назад"
+//             slideIndex = slides.length;
+//         }
 
 
-        slides.forEach((item) => item.style.display = 'none');//скрываем все слайды
-        dots.forEach((item) => item.classList.remove('dot-active'));//скрываем точки
+//         slides.forEach((item) => item.style.display = 'none');//скрываем все слайды
+//         dots.forEach((item) => item.classList.remove('dot-active'));//скрываем точки
 
-        slides[slideIndex - 1].style.display = 'block';//показываем первый слайд (slideIndex = 0)
-        dots[slideIndex -1].classList.add('dot-active');//показываем первую точку
-    }
+//         slides[slideIndex - 1].style.display = 'block';//показываем первый слайд (slideIndex = 0)
+//         dots[slideIndex -1].classList.add('dot-active');//показываем первую точку
+//     }
 
-    //функция, показывающая следующий слайд
-    function plusSlides (n) {
-        showSlides(slideIndex += n);
-    }
-    //функция, показывающая текущий слайд
-    function currentSlide (n) {
-        showSlides(slideIndex = n);
-    }
+//     //функция, показывающая следующий слайд
+//     function plusSlides (n) {
+//         showSlides(slideIndex += n);
+//     }
+//     //функция, показывающая текущий слайд
+//     function currentSlide (n) {
+//         showSlides(slideIndex = n);
+//     }
 
-    //показываем предыдущий слайд по клику "назад"
-    prev.addEventListener('click',  function() {
-        plusSlides(-1);
-    });
+//     //показываем предыдущий слайд по клику "назад"
+//     prev.addEventListener('click',  function() {
+//         plusSlides(-1);
+//     });
 
-    //показываем следующий слайд по клику "вперед"
-    next.addEventListener('click', function() {
-        plusSlides(1);
-    });
+//     //показываем следующий слайд по клику "вперед"
+//     next.addEventListener('click', function() {
+//         plusSlides(1);
+//     });
 
-    //делегируем событие клик обертке точек; показываем слайд, который соответствует нажатой точке
-    dotsWrap.addEventListener('click', function(event) {
-        for (let i = 0; i < dots.length + 1; i++) { //i < dots.length + 1, потому что нам нужно сделать дополнительный проход цикла (если нажата четвертая точка, i = 3, и проход цикла закончится на предпоследнем слайде)
+//     //делегируем событие клик обертке точек; показываем слайд, который соответствует нажатой точке
+//     dotsWrap.addEventListener('click', function(event) {
+//         for (let i = 0; i < dots.length + 1; i++) { //i < dots.length + 1, потому что нам нужно сделать дополнительный проход цикла (если нажата четвертая точка, i = 3, и проход цикла закончится на предпоследнем слайде)
 
-        //проверяем, что пользователь кликнул именно на точку (event.target имеет класс .dot) и нажата соответствующая точка
-            if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
-                currentSlide(i); //показываем текущий слайд
-            }
-        }
-    });
+//         //проверяем, что пользователь кликнул именно на точку (event.target имеет класс .dot) и нажата соответствующая точка
+//             if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
+//                 currentSlide(i); //показываем текущий слайд
+//             }
+//         }
+//     });
 
 //Калькулятор
     let persons = document.querySelectorAll('.counter-block-input')[0], //поле "количество людей" - вводит пользователь
